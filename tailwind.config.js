@@ -12,7 +12,7 @@ module.exports = {
       },
     },
     screens: {
-      sm: "640px",
+      sm: "560px",
       md: "768px",
       lg: "1024px",
       xl: "1280px",
@@ -25,6 +25,7 @@ module.exports = {
       },
       boxShadow: {
         primary: "0px 4px 40px rgba(0, 0, 0, 0.03)",
+        glow: "0 5px 15px rgba(145, 92, 182, .4)",
       },
       backgroundImage: {
         homeBackground: "url('/images/Background.png')",
