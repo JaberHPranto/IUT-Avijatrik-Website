@@ -19,8 +19,12 @@ module.exports = {
     },
 
     extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
       colors: {
         green: "#00DAAE",
+        greenCustom1: "#069175",
         transparent: "transparent",
       },
       boxShadow: {
