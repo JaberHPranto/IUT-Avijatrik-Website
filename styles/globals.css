@@ -8,7 +8,7 @@
     @apply bg-transparent font-poppins text-sm lg:text-base placeholder:text-white/70 focus:outline-none border-2 border-white w-full py-1 px-2 rounded-lg lg:px-4 lg:py-2;
   }
   .link-active {
-    @apply bg-[#f4fdf4] text-greenCustom1 px-4 rounded-xl;
+    @apply bg-[#f4fdf4] text-greenCustom1 px-4 rounded-xl text-center;
   }
 }
 
