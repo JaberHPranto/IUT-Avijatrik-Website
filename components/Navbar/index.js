@@ -18,9 +18,7 @@ const Navbar = () => {
           className=" text-white/80 cursor-pointer h-10 w-10 "
         />
       </div>
-      {mobileNav && (
-        <MobileNav mobileNav={mobileNav} setMobileNav={setMobileNav} />
-      )}
+      {mobileNav && <MobileNav setMobileNav={setMobileNav} />}
     </div>
   );
 };
