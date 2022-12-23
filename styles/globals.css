@@ -10,6 +10,9 @@
   .link-active {
     @apply bg-[#f4fdf4] text-greenCustom1 px-4 rounded-xl text-center;
   }
+  .controllerIcon {
+    @apply w-10 h-10 bg-[#888] p-1 rounded-sm shadow-greenCustom1 shadow-md cursor-pointer;
+  }
 }
 
 html,
@@ -49,7 +52,7 @@ a {
 
 /* Keyframe animation */
 .rotate {
-  animation: rotation 12s infinite linear;
+  animation: rotation 25s infinite linear;
 }
 
 @keyframes rotation {
