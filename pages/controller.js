@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ArrowSmUpIcon,
   ArrowSmDownIcon,
@@ -28,6 +28,50 @@ const Controller = () => {
     video.srcObject?.getTracks()[0].stop();
   };
 
+  // Arrow controllers
+  // Govet ei simple function o likhte paros na
+
+  // using arrows on keyboard
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === "ArrowUp") {
+        handleUp();
+      }
+      if (e.key === "ArrowDown") {
+        handleDown();
+      }
+      if (e.key === "ArrowLeft") {
+        handleLeft();
+      }
+      if (e.key === "ArrowRight") {
+        handleRight();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
+
+  const handleUp = () => {
+    console.log("UP arrow clicked");
+  };
+  const handleDown = () => {
+    console.log("DOWN arrow clicked");
+  };
+  const handleLeft = () => {
+    console.log("LEFT arrow clicked");
+  };
+  const handleRight = () => {
+    console.log("RIGHT arrow clicked");
+  };
+
+  // servo buttons
+  const handleLeftServo = () => {};
+  const handleRightServo = () => {};
+
   return (
     <div className="relative">
       <div className="bg-homeBackground h-screen bg-cover bg-center bg-no-repeat bgBlur -z-10 absolute top-0 left-0 right-0 bottom-0" />
@@ -39,30 +83,55 @@ const Controller = () => {
             autoPlay
             className="videoFeed h-[90vh] w-auto border-green border-[3px] bg-white/40"
           />
-          {isPlaying ? (
-            <button
-              className="bg-white text-black px-4 py-1 rounded-md my-1 absolute right-1/2 transform -translate-x-1/2"
-              onClick={stopVideo}
-            >
-              Stop
-            </button>
-          ) : (
-            <button
-              className="bg-white text-black px-4 py-1 rounded-md my-1 absolute right-1/2 transform -translate-x-1/2"
-              onClick={startVideo}
-            >
-              Start
-            </button>
-          )}
+          {/* Controls */}
+          <div className="w-full gap-8 flex items-center">
+            {isPlaying ? (
+              <button
+                className="bg-white text-black px-4 py-1 rounded-md my-1"
+                onClick={stopVideo}
+              >
+                Stop
+              </button>
+            ) : (
+              <button
+                className="bg-white text-black px-4 py-1 rounded-md my-1"
+                onClick={startVideo}
+              >
+                Start
+              </button>
+            )}
+            <div className="flex gap-2">
+              <ArrowSmLeftIcon
+                className="w-8 h-8 bg-white text-black/80 rounded-md"
+                onClick={handleLeftServo}
+              />
+              <ArrowSmRightIcon
+                className="w-8 h-8 bg-white text-black/80 rounded-md"
+                onClick={handleRightServo}
+              />
+            </div>
+          </div>
         </div>
         <div className="w-1/3 h-screen flex flex-col items-center gap-20">
           {/* Controller */}
           <div className="h-1/3 pt-10 flex items-center justify-center">
-            <div className="w-56 h-32 relative">
-              <ArrowSmUpIcon className="controllerIcon absolute left-1/2 transform -translate-x-1/2" />
-              <ArrowSmLeftIcon className="controllerIcon absolute left-0 top-1/2 transform -translate-y-1/2" />
-              <ArrowSmRightIcon className="controllerIcon absolute right-0 top-1/2 transform -translate-y-1/2" />
-              <ArrowSmDownIcon className="controllerIcon absolute bottom-0 left-1/2 transform -translate-x-1/2" />
+            <div className="w-40 h-32 relative">
+              <ArrowSmUpIcon
+                className="controllerIcon absolute left-1/2 transform -translate-x-1/2"
+                onClick={handleUp}
+              />
+              <ArrowSmLeftIcon
+                className="controllerIcon absolute left-0 top-1/2 transform -translate-y-1/2"
+                onClick={handleLeft}
+              />
+              <ArrowSmRightIcon
+                className="controllerIcon absolute right-0 top-1/2 transform -translate-y-1/2"
+                onClick={handleRight}
+              />
+              <ArrowSmDownIcon
+                className="controllerIcon absolute bottom-0 left-1/2 transform -translate-x-1/2"
+                onClick={handleDown}
+              />
             </div>
           </div>
           {/* Statistics */}
